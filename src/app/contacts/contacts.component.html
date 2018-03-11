@@ -1,3 +1,8 @@
 <h1>Contacts Book</h1>
-<app-contacts-list [contacts]="contacts" (selectContact)="onContactSelect($event)"></app-contacts-list>
-<app-contact-details [contact]="selectedContact" *ngIf="selectedContact"></app-contact-details>
+<app-contacts-list [contacts]="contacts" 
+    (selectContact)="onContactSelect($event)"
+    (addContact)="onContactAdd($event)"></app-contacts-list>
+<app-contact-details [contact]="selectedContact" 
+    (updateContact)="onContactUpdate($event)"
+    (deleteContact)="onContactDelete($event)"
+    *ngIf="selectedContact"></app-contact-details>

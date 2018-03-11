@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Contact } from '../models/contact';
 
 @Component({
@@ -9,6 +9,22 @@ import { Contact } from '../models/contact';
 export class ContactDetailsComponent {
 
   @Input() contact: Contact
+  @Output() updateContact = new EventEmitter<Contact>()
+  @Output() deleteContact = new EventEmitter<Contact>()
+
+
   constructor() { }
+
+  onUpdateBtnClick() {
+    const newContact: Contact = { ...this.contact };
+
+    newContact.name = 'Updated';
+
+    this.updateContact.emit(newContact);
+  }
+
+  onDeleteBtnClick() {
+    this.deleteContact.emit(this.contact);
+  }
 
 }

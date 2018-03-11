@@ -11,11 +11,16 @@ export class ContactsListComponent {
 
   @Input() contacts: Contact[] = []
   @Output() selectContact = new EventEmitter<Contact>()
+  @Output() addContact = new EventEmitter<String>()
 
   constructor() { }
 
-  onContactClick(contact: Contact){
+  onContactClick(contact: Contact) {
     this.selectContact.emit(contact);
+  }
+
+  addContactBtnClick() {
+    this.addContact.emit('Hello world!');
   }
 
 }

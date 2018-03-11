@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { ContactsListComponent } from './contacts-list/contacts-list.component';
 import { ContactDetailsComponent } from './contact-details/contact-details.component';
+import { ContactsService } from './contacts.service';
 
 
 @NgModule({
@@ -18,7 +19,7 @@ import { ContactDetailsComponent } from './contact-details/contact-details.compo
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [ContactsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
