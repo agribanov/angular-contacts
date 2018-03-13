@@ -1,5 +1,5 @@
 <ul>
-  <li *ngFor="let contact of contacts" (click)="onContactClick(contact)">
+  <li *ngFor="let contact of contacts" routerLink="/contact/{{contact.id}}">
     {{contact.id}} - {{contact.name}}
   </li>
 </ul>

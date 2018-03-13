@@ -15,6 +15,10 @@ export class ContactsService {
     return of(this.contacs);
   }
 
+  getContact(id: number): Observable<Contact>{
+    return of(this.contacs.find((c) => c.id === id ));
+  }
+
   addContact(name: string): Observable<Contact> {
     const id = Date.now();
     const newContact = {

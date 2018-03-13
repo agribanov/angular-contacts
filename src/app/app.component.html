@@ -4,4 +4,10 @@
     Welcome to {{ title }}!
   </h1>
 </div>
-<app-contacts></app-contacts>
+<ul>
+  <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
+  <li><a routerLink="/about" routerLinkActive="active">About</a></li>
+  <li><a routerLink="/contacts" routerLinkActive="active">Conacts</a></li>
+</ul>
+<router-outlet>
+</router-outlet>

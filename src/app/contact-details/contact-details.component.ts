@@ -1,30 +1,34 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Contact } from '../models/contact';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ContactsService } from '../contacts.service';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/switchMap';
 
 @Component({
   selector: 'app-contact-details',
   templateUrl: './contact-details.component.html',
   styleUrls: ['./contact-details.component.css']
 })
-export class ContactDetailsComponent {
+export class ContactDetailsComponent implements OnInit {
 
-  @Input() contact: Contact
-  @Output() updateContact = new EventEmitter<Contact>()
-  @Output() deleteContact = new EventEmitter<Contact>()
+  contact: Contact
 
+  constructor(
+    private route: ActivatedRoute,
+    private contactsService: ContactsService
+  ) { }
 
-  constructor() { }
+  ngOnInit(){
+    this.route.paramMap
+      .switchMap((params: ParamMap) => {
+        const id = +params.get('id');
 
-  onUpdateBtnClick() {
-    const newContact: Contact = { ...this.contact };
-
-    newContact.name = 'Updated';
-
-    this.updateContact.emit(newContact);
-  }
-
-  onDeleteBtnClick() {
-    this.deleteContact.emit(this.contact);
+        return this.contactsService.getContact(id)
+          
+      })
+      .subscribe((data) => this.contact = data);
+    
   }
 
 }
