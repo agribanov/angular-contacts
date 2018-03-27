@@ -2,21 +2,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { ContactsModule } from './contacts/contacts.module';
 
 import { AppComponent } from './app.component';
-import { ContactsComponent } from './contacts/contacts.component';
-import { ContactsListComponent } from './contacts-list/contacts-list.component';
-import { ContactDetailsComponent } from './contact-details/contact-details.component';
-import { ContactsService } from './contacts.service';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
+import { AdminModule } from './admin/admin.module';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent},
   { path: 'about', component: AboutComponent},
-  { path: 'contacts', component: ContactsListComponent},
-  { path: 'contact/:id', component: ContactDetailsComponent},
   { path: '', redirectTo: '/contacts', pathMatch: 'full'},
   { path: '**', component: NotFoundComponent}
 ];
@@ -25,18 +21,16 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    ContactsComponent,
-    ContactsListComponent,
-    ContactDetailsComponent,
     NotFoundComponent,
     HomeComponent,
-    AboutComponent
+    AboutComponent,
   ],
   imports: [
     BrowserModule,
+    ContactsModule,
+    AdminModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [ContactsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

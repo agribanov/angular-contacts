@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { Contact } from './models/contact';
-import { CONTACTS } from './constacts-mock';
+import { CONTACTS } from '../constacts-mock';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 
